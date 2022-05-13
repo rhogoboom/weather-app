@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+
+<body>
+    <nav>
+        <button id="unit-toggle">Toggle Units</button>
+    </nav>
+    <div class="main">
+        <div class="top">
+            <div class="top-left">
+                <span id="weather-description">B</span>
+                <span id="current-location">C</span>
+                <span id="current-date">D</span>
+                <span id="current-time">E</span>
+                <span id="current-temp">F</span>
+                <img id="current-weather-symbol">
+                <input type="search" name="search" id="search" placeholder="Search Location">
+            </div>
+            <div class="top-right">
+                <div>
+                    <span>Placeholder</span>
+                    <span>Feels Like</span>
+                    <span id="feels-like"></span>
+                </div>
+                <div>
+                    <span>Placeholder</span>
+                    <span>Humidity</span>
+                    <span id="humidity"></span>
+                </div>
+                <div>
+                    <span>Placeholder</span>
+                    <span>Chance of Rain</span>
+                    <span id="rain-chance"></span>
+                </div>
+                <div>
+                    <span>Placeholder</span>
+                    <span>Wind Speed</span>
+                    <span id="wind-speed"></span>
+                </div>
+            </div>
+        </div>
+        <div class="display-buttons">
+            <button id="daily-button">Daily</button>
+            <button id="hourly-button">Hourly</button>
+            <div class="arrow-buttons">
+                <span id="left-arrow">&#60;</span>
+                <div class="dot active-dot" data-tag="1"></div>
+                <div class="dot" data-tag="2"></div>
+                <div class="dot" data-tag="3"></div>
+                <span id="right-arrow">&#62;</span>
+            </div>
+        </div>
+        <div class="dailies" id="dailies">
+            <div class="daily">
+                <span></span>
+                <span></span>
+                <span></span>
+                <img>
+            </div>
+            <div class="daily">
+                <span></span>
+                <span></span>
+                <span></span>
+                <img>
+            </div>
+            <div class="daily">
+                <span></span>
+                <span></span>
+                <span></span>
+                <img>
+            </div>
+            <div class="daily">
+                <span></span>
+                <span></span>
+                <span></span>
+                <img>
+            </div>
+            <div class="daily">
+                <span></span>
+                <span></span>
+                <span></span>
+                <img>
+            </div>
+            <div class="daily">
+                <span></span>
+                <span></span>
+                <span></span>
+                <img>
+            </div>
+            <div class="daily">
+                <span></span>
+                <span></span>
+                <span></span>
+                <img>
+            </div>
+        </div>
+        <div class="hourlies" id="hourlies">
+            <div class="hour" data-tag="1"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="1"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="1"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="1"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="1"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="1"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="1"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="2"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="2"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="2"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="2"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="2"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="2"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="2"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="3"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="3"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="3"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="3"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="3"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="3"><span></span><span></span><img src="" alt=""></div>
+            <div class="hour" data-tag="3"><span></span><span></span><img src="" alt=""></div>
+        </div>
+    </div>
+
+    <script src="bundle.js"></script>
+</body>
+
+</html>
