@@ -11,7 +11,7 @@ const weatherApp = {
   apiKey: "ed9a58b1f19f8e2120a326ae399b692a",
   getGeocode: async function (location) {
     const response = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${this.apiKey}`,
+      `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${this.apiKey}`,
       { mode: "cors" }
     );
     const locationData = await response.json();
