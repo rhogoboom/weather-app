@@ -1,67 +1,12 @@
 import { fromUnixTime } from "date-fns";
 import { formatInTimeZone } from "date-fns-tz";
+import { startCase } from "lodash";
 import "./style.css";
 
 const weatherApp = {
   init: function () {
     this.getWeather("Rockville, Maryland");
-    this.DOMCache.searchBar.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        this.getWeather(
-          this.DOMCache.searchBar.value,
-          this.currentSearch.units
-        );
-        this.DOMCache.searchBar.value = "";
-      }
-    });
-    this.DOMCache.unitToggle.addEventListener("click", () => {
-      this.toggleUnits();
-    });
-    this.DOMCache.hourlyButton.addEventListener("click", () => {
-      this.DOMCache.dailyDiv.style.display = "none";
-      this.DOMCache.hourlyDiv.style.display = "flex";
-      this.DOMCache.arrowsDiv.style.display = "flex";
-      const activeDot = document.querySelector(".active-dot");
-      this.hourliesToggle(activeDot);
-    });
-    this.DOMCache.dailyButton.addEventListener("click", () => {
-      this.DOMCache.dailyDiv.style.display = "flex";
-      this.DOMCache.hourlyDiv.style.display = "none";
-      this.DOMCache.arrowsDiv.style.display = "none";
-    });
-    this.DOMCache.dots.forEach((dot) => {
-      dot.addEventListener("click", (e) => {
-        const target = e.target;
-        const tag = e.target.dataset.tag;
-        if (target.classList.contains("active-dot")) {
-          return;
-        }
-        const previouslyActive = document.querySelector(".active-dot");
-        previouslyActive.classList.remove("active-dot");
-        target.classList.add("active-dot");
-        this.hourliesToggle(target);
-      });
-    });
-    this.DOMCache.leftArrow.addEventListener("click", () => {
-      const previouslyActive = document.querySelector(".active-dot");
-      if (previouslyActive.dataset.tag === "1") {
-        return;
-      }
-      const newActive = previouslyActive.previousElementSibling;
-      previouslyActive.classList.remove("active-dot");
-      newActive.classList.add("active-dot");
-      this.hourliesToggle(newActive);
-    });
-    this.DOMCache.rightArrow.addEventListener("click", () => {
-      const previouslyActive = document.querySelector(".active-dot");
-      if (previouslyActive.dataset.tag === "3") {
-        return;
-      }
-      const newActive = previouslyActive.nextElementSibling;
-      previouslyActive.classList.remove("active-dot");
-      newActive.classList.add("active-dot");
-      this.hourliesToggle(newActive);
-    });
+    this.addEventListeners();
   },
   apiKey: "ed9a58b1f19f8e2120a326ae399b692a",
   getGeocode: async function (location) {
@@ -134,7 +79,7 @@ const weatherApp = {
     const { pop: rainChance } = data.daily[0];
     const today = fromUnixTime(data.current.dt);
     const { timezone } = data;
-    this.DOMCache.weatherDescription.innerText = description;
+    this.DOMCache.weatherDescription.innerText = startCase(description);
     this.DOMCache.currentLocation.innerText = `${this.currentSearch.city}, ${
       this.currentSearch.state !== undefined
         ? this.currentSearch.state
@@ -207,6 +152,65 @@ const weatherApp = {
       } else {
         hour.style.display = "none";
       }
+    });
+  },
+  addEventListeners: function () {
+    this.DOMCache.searchBar.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        this.getWeather(
+          this.DOMCache.searchBar.value,
+          this.currentSearch.units
+        );
+        this.DOMCache.searchBar.value = "";
+      }
+    });
+    this.DOMCache.unitToggle.addEventListener("click", () => {
+      this.toggleUnits();
+    });
+    this.DOMCache.hourlyButton.addEventListener("click", () => {
+      this.DOMCache.dailyDiv.style.display = "none";
+      this.DOMCache.hourlyDiv.style.display = "flex";
+      this.DOMCache.arrowsDiv.style.display = "flex";
+      const activeDot = document.querySelector(".active-dot");
+      this.hourliesToggle(activeDot);
+    });
+    this.DOMCache.dailyButton.addEventListener("click", () => {
+      this.DOMCache.dailyDiv.style.display = "flex";
+      this.DOMCache.hourlyDiv.style.display = "none";
+      this.DOMCache.arrowsDiv.style.display = "none";
+    });
+    this.DOMCache.dots.forEach((dot) => {
+      dot.addEventListener("click", (e) => {
+        const target = e.target;
+        const tag = e.target.dataset.tag;
+        if (target.classList.contains("active-dot")) {
+          return;
+        }
+        const previouslyActive = document.querySelector(".active-dot");
+        previouslyActive.classList.remove("active-dot");
+        target.classList.add("active-dot");
+        this.hourliesToggle(target);
+      });
+    });
+    this.DOMCache.leftArrow.addEventListener("click", () => {
+      const previouslyActive = document.querySelector(".active-dot");
+      if (previouslyActive.dataset.tag === "1") {
+        return;
+      }
+      const newActive = previouslyActive.previousElementSibling;
+      previouslyActive.classList.remove("active-dot");
+      newActive.classList.add("active-dot");
+      this.hourliesToggle(newActive);
+    });
+    this.DOMCache.rightArrow.addEventListener("click", () => {
+      const previouslyActive = document.querySelector(".active-dot");
+      if (previouslyActive.dataset.tag === "3") {
+        return;
+      }
+      const newActive = previouslyActive.nextElementSibling;
+      previouslyActive.classList.remove("active-dot");
+      newActive.classList.add("active-dot");
+      this.hourliesToggle(newActive);
     });
   },
 };
