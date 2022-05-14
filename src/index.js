@@ -96,7 +96,7 @@ const weatherApp = {
       "p"
     );
     this.DOMCache.currentTemp.innerText = this.formatTemp(temp);
-    this.DOMCache.currentIcon.src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+    this.DOMCache.currentIcon.src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
     this.DOMCache.feelsLike.innerText = this.formatTemp(feelsLike);
     this.DOMCache.humidity.innerText = `${humidity}%`;
     this.DOMCache.rainChance.innerText = `${rainChance}%`;
@@ -117,7 +117,7 @@ const weatherApp = {
       children[0].textContent = day;
       children[1].textContent = this.formatTemp(high);
       children[2].textContent = this.formatTemp(low);
-      children[3].src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+      children[3].src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
     }
   },
   displayHourlies: function (data) {
@@ -132,7 +132,7 @@ const weatherApp = {
       const { icon } = data.hourly[i + 1].weather[0];
       children[0].textContent = hour;
       children[1].textContent = this.formatTemp(temp);
-      children[2].src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+      children[2].src = `https://openweathermap.org/img/wn/${icon}@2x.png`;
     }
   },
   toggleUnits: function () {
